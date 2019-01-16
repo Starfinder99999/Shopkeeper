@@ -2,7 +2,7 @@
 Shopkeeper/Assets/Ultimate Game Music Collection/
 Shopkeeper/Assets/Music/
 Shopkeeper/Assets/Sprites/
-Shopkeeper/Library/CurrentLayout.dwlt
+*.dwlt
 
 # =============== #
 # Unity generated #
@@ -24,7 +24,7 @@ sysinfo.txt
 [Ee]xported[Oo]bj/
 .vs/
 /*.userprefs
-/*.csproj
+*.csproj
 /*.pidb
 *.pidb.meta
 /*.suo
