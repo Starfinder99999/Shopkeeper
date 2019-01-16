@@ -63,9 +63,11 @@
     <Compile Include="Assets\Scripts\Character\Character.cs" />
     <Compile Include="Assets\Scripts\Character\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Character\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Equipment.cs" />
     <Compile Include="Assets\Scripts\GameClose.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\Item.cs" />
+    <Compile Include="Assets\Scripts\ItemQuality.cs" />
     <Compile Include="Assets\Scripts\LoadLevel.cs" />
     <Compile Include="Assets\Scripts\ResumeButton.cs" />
     <Compile Include="Assets\Scripts\Status.cs" />
@@ -73,16 +75,16 @@
     <Compile Include="Assets\Scripts\TransitionToLoop.cs" />
     <None Include="Assets\Ultimate Game Music Collection\_README.txt" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/UserData/Documents/UnityProjects/Shopkeeper/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/UserData/Documents/UnityProjects/ShopkeeperRepo/Shopkeeper/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/UserData/Documents/UnityProjects/Shopkeeper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/UserData/Documents/UnityProjects/ShopkeeperRepo/Shopkeeper/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/UserData/Documents/UnityProjects/Shopkeeper/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/UserData/Documents/UnityProjects/ShopkeeperRepo/Shopkeeper/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/UserData/Documents/UnityProjects/Shopkeeper/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/UserData/Documents/UnityProjects/ShopkeeperRepo/Shopkeeper/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>D:/Programms/Unity/2018.2.7f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
