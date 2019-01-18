@@ -56,15 +56,16 @@ namespace Player
                     this.Chestplate = item;
                     break;
             }
+            return null;
 
         }
         public Equipment EquipClothing(Clothing item)
         {
-
+            return null;
         }
         public Equipment EquipAccessoir(Accessoir item)
         {
-
+            return null;
         }
     }
 }
