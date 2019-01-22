@@ -6,7 +6,7 @@ namespace Items.Equipment
 {
     public class Equipment : Item
     {
-        
+        public float Worth { get; private set; }
         public Equipment(string name, float weight, ItemQuality quality) : base(name, weight, quality)
         {
             
@@ -35,13 +35,23 @@ namespace Items.Equipment
         Shoe
     }
 
+    public enum ArmorEnchantments
+    {
+        Burning,
+        Frozen,
+        Iluminated
+    }
+
 
     public class Armor : Equipment
     {
         public int Defense { get; private set; }
 
+        
+
         public ArmorTypes Type { get; private set; }
 
+        public Dictionary<ArmorEnchantments, float> Enchantmens { get; private set; }
 
 
         public Armor(string name, float weight, ItemQuality quality, int defense, ArmorTypes type) : base(name, weight, quality)
