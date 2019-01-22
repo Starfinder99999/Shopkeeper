@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
 public class TEST : MonoBehaviour {
 
     [SerializeField] Generic.Inventory inventory;
@@ -24,3 +25,4 @@ public class TEST : MonoBehaviour {
         inventory.RemoveItem(item);
     }
 }
+*/
