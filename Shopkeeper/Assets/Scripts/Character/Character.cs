@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//test
+//Commentary
 namespace Character
 {
     public class Character : MonoBehaviour
@@ -12,8 +15,8 @@ namespace Character
         [SerializeField] string description;
         [SerializeField] Sprite sprite;
 
-        [SerializeField] int[] inventory; //TODO make inventory obj
-        [SerializeField] int[] stats; //TODO make stat obj
+        [SerializeField] Generic.Inventory inventory; 
+        [SerializeField] Status stats; //TODO make stat obj
 
         public int hp;
 

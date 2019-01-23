@@ -7,7 +7,7 @@ public class TEST : MonoBehaviour {
 
     [SerializeField] Generic.Inventory inventory;
 
-    Items.Item item = new Items.Item("Item", 14.5f);
+    Items.Item item;
 
     public void AddItem()
     {
