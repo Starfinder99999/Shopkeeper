@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Character {
+namespace Character { //TODO finish status class
     public class Status : MonoBehaviour {
 
         public float Strength {

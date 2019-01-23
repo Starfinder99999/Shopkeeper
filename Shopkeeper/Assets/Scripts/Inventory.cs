@@ -9,23 +9,24 @@ namespace Generic
     {
         [SerializeField] float weightLimit;
 
-        public List<Item> ItemList { get; private set; }
+        public Dictionary<Item, int> ItemList { get; private set; }
 
         [SerializeField] private float currentWeight;
 
         private void Awake()
         {
-            this.ItemList = new List<Item>();
+            this.ItemList = new Dictionary<Item, int>();
            
         }
 
-        public bool AddItem(Item item)
+        public bool AddItem(Item item, int amount = 1)
         {
 
             if (this.currentWeight + item.Weight <= this.weightLimit)
             {
-                this.ItemList.Add(item);
-                this.currentWeight += item.Weight;
+                if (!this.ItemList.ContainsKey(item)) this.ItemList.Add(item, amount);
+                else this.ItemList[item] += amount;
+                this.currentWeight += (item.Weight * amount);
                 return true;
             }
             else
@@ -34,12 +35,13 @@ namespace Generic
             }
         }
 
-        public bool RemoveItem(Item item)
+        public bool RemoveItem(Item item, int amount = 1)
 
         { 
-            if (this.ItemList.Contains(item)){
-                this.currentWeight -= item.Weight;
-                this.ItemList.Remove(item);
+            if (this.ItemList.ContainsKey(item) && this.ItemList[item] <= amount){ //TODO check if runtime error occurs
+                this.currentWeight -= (item.Weight * amount);
+                this.ItemList[item] -= amount;
+                if (this.ItemList[item] <= 0) this.ItemList.Remove(item);
                 return true;
             }
             else
@@ -48,22 +50,6 @@ namespace Generic
                 return false;
             }
                 
-        }
-
-        public Item RemoveItem(int itemIndex)
-        {
-            if (this.ItemList.Count > itemIndex)
-            {
-                this.currentWeight -= this.ItemList[itemIndex].Weight;
-                Item item = this.ItemList[itemIndex];
-                this.ItemList.RemoveAt(itemIndex);
-                return item;
-            }
-            else
-            {
-                Debug.Log("Index " + itemIndex + " not in Inventory of " + this.gameObject);
-                return null;
-            }
         }
     }
 }

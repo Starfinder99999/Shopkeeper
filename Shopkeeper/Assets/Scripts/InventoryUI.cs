@@ -25,7 +25,7 @@ namespace GameUI
             {
                 GameObject newUiItem = uiItem;
             }
-            */
+            */ ///TODO make Refresh Item List function
             this.gameObject.SetActive(true);
             
         }

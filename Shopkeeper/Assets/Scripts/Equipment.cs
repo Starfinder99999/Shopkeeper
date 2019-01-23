@@ -13,9 +13,20 @@ namespace Items.Equipment
         }
     }
 
+    public enum WeaponSlotTypes
+    {
+        OneHanded,
+        Offhand,
+        Primaryhand,
+        Twohanded
+    }
+
     public class Weapon : Equipment
     {
         public int Damage { get; set; }
+
+        public WeaponSlotTypes SlotType { get; private set; }
+
 
         public Weapon(string name, float weight, ItemQuality quality, int damage) : base(name, weight, quality)
         {
