@@ -190,5 +190,8 @@ namespace Player
         }
 
         private int DeterminBestAccessoirSlot(AccessoryTypes type)
+        {
+            return 0;
+        }
     }
 }
