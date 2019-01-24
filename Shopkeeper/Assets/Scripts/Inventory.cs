@@ -49,7 +49,7 @@ namespace Generic
                 Debug.Log(item + " " + item.Name + " not found in Inventory of " + this.gameObject);
                 return false;
             }
-                
         }
+
     }
 }
