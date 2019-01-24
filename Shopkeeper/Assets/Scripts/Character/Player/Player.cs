@@ -4,7 +4,7 @@ using UnityEngine;
 using Items;
 using Items.Equipment;
 
-namespace Player
+namespace Character.Player
 {
     public class Player : MonoBehaviour
     {
