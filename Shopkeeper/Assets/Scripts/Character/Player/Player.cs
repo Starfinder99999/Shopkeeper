@@ -6,7 +6,7 @@ using Items.Equipment;
 
 namespace Character.Player
 {
-    public class Player : MonoBehaviour
+    public class Player : Character
     {
         public EquipmentInventory PlayerEquipment { get; private set; }
 
