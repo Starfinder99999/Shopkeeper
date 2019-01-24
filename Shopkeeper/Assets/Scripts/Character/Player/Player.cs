@@ -259,7 +259,7 @@ namespace Player
         {
             Weapon oldWeapon = null;
 
-            if (lefWeapon)
+            if (leftWeapon)
             {
                 oldWeapon = this.LeftWeapon;
                 this.LeftWeapon = null;
