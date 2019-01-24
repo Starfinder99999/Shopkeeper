@@ -15,14 +15,23 @@ namespace Generic
 
         private void Awake()
         {
+ 
             this.ItemList = new Dictionary<Item, int>();
+
            
         }
 
+        /// <summary>
+        /// Adds amount to value of key item.
+        /// If the Inventory does not contain the key item, its adds a key with the value of amount.
+        /// </summary>
+        /// <param name="item">Key in Dictionary</param>
+        /// <param name="amount"> amount >= 0 </param>
+        /// <returns>Returns false if not successfull</returns>
         public bool AddItem(Item item, int amount = 1)
         {
 
-            if (this.currentWeight + item.Weight <= this.weightLimit)
+            if (this.currentWeight + item.Weight <= this.weightLimit && amount >= 0)
             {
                 if (!this.ItemList.ContainsKey(item)) this.ItemList.Add(item, amount);
                 else this.ItemList[item] += amount;
@@ -35,6 +44,14 @@ namespace Generic
             }
         }
 
+        /// <summary>
+        /// Reduces value of key item by amount.
+        /// If amount = value, the key is deleted.
+        /// If amount > value, returns false.
+        /// </summary>
+        /// <param name="item">key</param>
+        /// <param name="amount">value >= 0</param>
+        /// <returns>False if unsuccessfull</returns>
         public bool RemoveItem(Item item, int amount = 1)
 
         { 
@@ -46,7 +63,7 @@ namespace Generic
             }
             else
             {
-                Debug.Log(item + " " + item.Name + " not found in Inventory of " + this.gameObject);
+               
                 return false;
             }
         }
