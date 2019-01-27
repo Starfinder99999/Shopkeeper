@@ -16,7 +16,7 @@ namespace GameUI
         // Use this for initialization
         void Awake()
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
         }
 
         public void OpenInventory()
@@ -27,7 +27,18 @@ namespace GameUI
             }
             */ ///TODO make Refresh Item List function
             this.gameObject.SetActive(true);
-            
+        }
+
+        private GameObject CreateItemSlot()
+        {
+            //TODO
+            //GameObject newButton = Button();
+            return null;
+        }
+
+        public void refreshItemList()
+        {
+            //TODO
         }
     }
 }
