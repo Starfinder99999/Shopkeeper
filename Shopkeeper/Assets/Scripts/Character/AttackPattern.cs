@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Character.Actions
 {
-    public class AttackPattern : MonoBehaviour
+    public class AttackPattern : Ability
     {
 
         // Use this for initialization
