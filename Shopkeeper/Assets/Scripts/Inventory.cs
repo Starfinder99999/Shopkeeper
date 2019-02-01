@@ -55,7 +55,7 @@ namespace Generic
         public bool RemoveItem(Item item, int amount = 1)
 
         { 
-            if (this.ItemList.ContainsKey(item) && this.ItemList[item] <= amount){ //TODO check if runtime error occurs
+            if (this.ItemList.ContainsKey(item) && this.ItemList[item] <= amount){ //CHECK if runtime error occurs
                 this.currentWeight -= (item.Weight * amount);
                 this.ItemList[item] -= amount;
                 if (this.ItemList[item] <= 0) this.ItemList.Remove(item);

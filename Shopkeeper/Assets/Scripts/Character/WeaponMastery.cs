@@ -18,6 +18,6 @@ namespace Character
     {
         public Dictionary<WeaponMastery, float> WeaponMasteryLevels { get; set; }
 
-        
+        //TODO add Skillknowledge
     }
 }

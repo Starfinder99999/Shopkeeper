@@ -31,14 +31,14 @@ namespace GameUI
 
         private GameObject CreateItemSlot()
         {
-            //TODO
+            //TODO CreateItemSlot()
             //GameObject newButton = Button();
             return null;
         }
 
-        public void refreshItemList()
+        public void RefreshItemList()
         {
-            //TODO
+            //TODO RefreshItemList()
         }
     }
 }

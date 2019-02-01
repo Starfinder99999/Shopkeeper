@@ -6,17 +6,26 @@ namespace Character.Actions
 {
     public class AttackPattern : Ability
     {
+        private List<IEnumerator> skillSequence;
+        private Coroutine coroutine;
 
-        // Use this for initialization
-        void Start()
+        public AttackPattern(Generic.CoroutineTracker tracker, float cooldown, string name, List<IEnumerator> skills) : base(tracker, cooldown, name)
         {
-
+            this.skillSequence = skills;
         }
 
-        // Update is called once per frame
-        void Update()
+        public override IEnumerator Use()
         {
-
+            foreach(IEnumerator skill in skillSequence)
+            {
+                this.coroutine = this.coroutineTracker.StartTrackedCoroutine(skill);
+                while (this.coroutineTracker.IsTrackedCoroutineRunning(skill))
+                {
+                    yield return new WaitForEndOfFrame();
+                }
+            }
         }
+
+
     }
 }

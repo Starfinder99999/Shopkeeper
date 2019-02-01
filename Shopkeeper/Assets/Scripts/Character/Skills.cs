@@ -2,64 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Character.Actions
 {
     public class Skill : MonoBehaviour
     {
-        public string Name { get;  set; }
-        public int EnergyCost { get;  set; }
-        public int HealthCost { get;  set; }
-        public int BaseSpeed { get;  set; }
-        public float Cooldown { get;  set; }
+        [SerializeField] public string skillName = "Skill";
+        [SerializeField] public string skillDescription = "A Skill";
+        [SerializeField] public int energyCost = 0;
+        [SerializeField] public int healthCost = 0;
+        [SerializeField] public int baseSpeed = 1;
+        [SerializeField] public float cooldown = 1f;
 
-        virtual public bool Use() { return true; }
+        virtual public IEnumerator Use() { yield return new WaitForEndOfFrame();}
     }
 
     public class WeaponTechnique : Skill
     {
-        public WeaponMasteryTypes WeaponMasteryType { get; private set; }
-        public float RequiredMastery { get; private set; }
+        [SerializeField] public WeaponMasteryTypes WeaponMasteryType = WeaponMasteryTypes.oneHandedBade;
+        [SerializeField] public float RequiredMastery = 0f;
 
         
     }
 
     public class Spell : Skill
     {
-        public float WisdomRequired { get; private set; }
-        public float IntelligenceRequired { get; private set; }
+        [SerializeField] public float WisdomRequired = 0f;
+        [SerializeField] float IntelligenceRequired = 0f;
 
     }
 
     public class Whirlwind : WeaponTechnique
     {
 
-        override public bool Use()
+        public override IEnumerator Use()
         {
-            //TODO make actualy working techniques
-            return true;
+            return base.Use();
         }
     }
 
     public class Wait : Skill
     {
-        public Wait()
-        {
-            this.Cooldown = 0f;
-        }
+        [SerializeField] new public float cooldown = 0f;
 
-        override public bool Use()
-        {
-            return this.Use(1f);
-        }
-
-        public bool Use(float time)
-        {
-            StartCoroutine(UseWait(time));
-            return true;
-        }
-
-        private IEnumerator UseWait(float time)
+        public IEnumerator Use(float time)
         {
             float timeWaited = 0f;
 
