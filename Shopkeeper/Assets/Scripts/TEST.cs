@@ -2,27 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
+
 public class TEST : MonoBehaviour {
+    public Generic.CoroutineTracker tracker;
 
-    [SerializeField] Generic.Inventory inventory;
-
-    Items.Item item;
-
-    public void AddItem()
+    private void Awake()
     {
-        
-        inventory.AddItem(item);
-    }
-    
-    public void Remove (int index)
-    {
-        inventory.RemoveItem(index);
+        tracker = gameObject.AddComponent<Generic.CoroutineTracker>();
+
     }
 
-    public void Remove()
-    {
-        inventory.RemoveItem(item);
-    }
 }
-*/

@@ -5,23 +5,41 @@ using UnityEngine;
 
 namespace Character.Actions
 {
+    public struct AbilityRequirements
+    {
+        [SerializeField] public float intelligence;
+        [SerializeField] public float wisdom;
+        [SerializeField] public float energy;
+        [SerializeField] public float health;
+        [SerializeField] public float cooldown;
+        [SerializeField] public Dictionary<WeaponMasteryTypes, float> masteryRequirements;
+    }
+
 
     public class Ability : MonoBehaviour
     {
         public readonly Generic.CoroutineTracker coroutineTracker;
 
-        public float Cooldown { get; private set; }
+        public float currentCooldown { get; private set; }
         public string Name { get; private set; }
 
-        public Ability(Generic.CoroutineTracker tracker, float cooldown, string name)
+        [SerializeField] public AbilityRequirements requirements;
+
+
+        private void Update()
+        {
+            if (currentCooldown > 0) currentCooldown -= Time.deltaTime;
+        }
+
+        public Ability(Generic.CoroutineTracker tracker, string name)
         {
             this.coroutineTracker = tracker;
             this.Name = name;
-            this.Cooldown = cooldown;
         }
 
         virtual public IEnumerator Use()
         {
+            currentCooldown = requirements.cooldown;
             yield return new WaitForEndOfFrame();
         }
     }

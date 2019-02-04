@@ -2,15 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityManager : MonoBehaviour { //TODO AbilityManager
+namespace Character
+{
+    public enum AbilityReturnValue
+    {
+        Success,
+        NotEnoughEnergy,
+        CooldownInProgress,
+        NotEnoughHealth,
+        NotEnoughIntelligence,
+        NotEnoughWisdom,
+        AbilityNotLearnt,
+        WeaponMasteryNotMet;
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public class AbilityManager : MonoBehaviour
+    { 
+        [SerializeField] private Generic.CoroutineTracker coroutineTracker;
+        [SerializeField] private List<Actions.Ability> learntAbilities = new List<Actions.Ability>();
+
+        private void Awake()
+        {
+            this.coroutineTracker = this.gameObject.AddComponent<Generic.CoroutineTracker>();
+        }
+
+
+        public AbilityReturnValue UseAbility(Actions.Ability ability)
+        {
+            if (!learntAbilities.Contains(ability)) return AbilityReturnValue.AbilityNotLearnt;
+            int abilityIndex = learntAbilities.IndexOf(ability);
+            if (learntAbilities[abilityIndex].currentCooldown > 0) { return AbilityReturnValue.CooldownInProgress; }
+            else
+            {
+
+                if (this.GetComponent<Player.Player>())
+                {
+                    Player.Player player = this.GetComponent<Player.Player>();
+                    if (player.status.Energy < learntAbilities[abilityIndex].requirements.energy) return AbilityReturnValue.NotEnoughEnergy;
+                    else if (player.status.Health < learntAbilities[abilityIndex].requirements.health) return AbilityReturnValue.NotEnoughHealth;
+                    else if (player.status.Intelligence < learntAbilities[abilityIndex].requirements.intelligence) return AbilityReturnValue.NotEnoughIntelligence;
+                    else if (player.status.Wisdom < learntAbilities[abilityIndex].requirements.wisdom) return AbilityReturnValue.NotEnoughWisdom;
+                    else
+                    {
+                        foreach (WeaponMasteryTypes key in learntAbilities[abilityIndex].requirements.masteryRequirements.Keys)
+                        {
+                            if (player.weaponMastery.WeaponMasteryLevels[key] < learntAbilities[abilityIndex].requirements.masteryRequirements[key])
+                            {
+                                return AbilityReturnValue.WeaponMasteryNotMet;
+                            }
+                        }
+                    }
+                }
+
+            }
+            coroutineTracker.StartTrackedCoroutine(learntAbilities[abilityIndex].Use());
+            return AbilityReturnValue.Success;
+        }
+    }
 }

@@ -9,7 +9,7 @@ namespace Character.Player
     public class Player : Character
     {
         public EquipmentInventory PlayerEquipment { get; private set; }
-
+        public WeaponMastery weaponMastery;
 
         // Use this for initialization
         void Start()

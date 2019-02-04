@@ -18,7 +18,7 @@ namespace Character.Actions
         {
             foreach(IEnumerator skill in skillSequence)
             {
-                this.coroutine = this.coroutineTracker.StartTrackedCoroutine(skill);
+                this.coroutine = this.coroutineTracker.StartTrackedCoroutine(skill); //TODO redo AttackPattern, Skill and Spell, so they work like a interpreter based on save file
                 while (this.coroutineTracker.IsTrackedCoroutineRunning(skill))
                 {
                     yield return new WaitForEndOfFrame();

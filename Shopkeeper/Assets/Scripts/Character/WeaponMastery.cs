@@ -16,7 +16,7 @@ namespace Character
     
     public class WeaponMastery : MonoBehaviour
     {
-        public Dictionary<WeaponMastery, float> WeaponMasteryLevels { get; set; }
+        public Dictionary<WeaponMasteryTypes, float> WeaponMasteryLevels { get; set; }
 
         //TODO add Skillknowledge
     }

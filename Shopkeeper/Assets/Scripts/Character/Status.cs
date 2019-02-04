@@ -22,13 +22,13 @@ namespace Character { //TODO finish status class
         public float Intelligence { get; private set; }
         public float Wisdom { get; private set; }
         public float MagicAffinity { get; private set; }
-        public float Health { get; private set; }
-        public float Energy { get; private set; }
+        public int Health { get; private set; }
+        public int Energy { get; private set; }
         public float Age { get; private set; }
 
         void CalcHealth()
         {
-            this.Health = 100 + Strength + Vitality;
+            this.Health = (int) (100 + Strength + Vitality);
         }
 
     }

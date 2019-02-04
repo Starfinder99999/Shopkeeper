@@ -10,13 +10,14 @@ namespace Character
     public class Character : MonoBehaviour
     {
 
-        [SerializeField] string name;
+        [SerializeField] string characterName;
         [SerializeField] int level;
         [SerializeField] string description;
         [SerializeField] Sprite sprite;
 
-        [SerializeField] Generic.Inventory inventory; 
-        [SerializeField] Status stats; //TODO make stat obj
+        [SerializeField] Generic.Inventory inventory;
+        public Status status { get; private set; }
+        public AbilityManager abilityManager;
 
         public int hp;
 
