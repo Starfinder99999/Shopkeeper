@@ -10,18 +10,7 @@ namespace Character.Player
     {
         public EquipmentInventory PlayerEquipment { get; private set; }
         public WeaponMastery weaponMastery;
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 
     public class EquipmentInventory

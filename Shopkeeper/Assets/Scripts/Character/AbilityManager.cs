@@ -13,7 +13,7 @@ namespace Character
         NotEnoughIntelligence,
         NotEnoughWisdom,
         AbilityNotLearnt,
-        WeaponMasteryNotMet;
+        WeaponMasteryNotMet
     }
 
     public class AbilityManager : MonoBehaviour
@@ -56,6 +56,41 @@ namespace Character
 
             }
             coroutineTracker.StartTrackedCoroutine(learntAbilities[abilityIndex].Use());
+            return AbilityReturnValue.Success;
+        }
+
+        public AbilityReturnValue UseAbility(System.Type abilityType)
+        {
+            Actions.Ability abilityToUse = null;
+            foreach (Actions.Ability ability in learntAbilities)
+            {
+                if (ability.GetType() == abilityType) { abilityToUse = ability; break; }
+            }
+            if (abilityToUse == null) return AbilityReturnValue.AbilityNotLearnt;
+            else
+            {
+
+                if (this.GetComponent<Player.Player>())
+                {
+                    Player.Player player = this.GetComponent<Player.Player>();
+                    if (player.status.Energy < abilityToUse.requirements.energy) return AbilityReturnValue.NotEnoughEnergy;
+                    else if (player.status.Health < abilityToUse.requirements.health) return AbilityReturnValue.NotEnoughHealth;
+                    else if (player.status.Intelligence < abilityToUse.requirements.intelligence) return AbilityReturnValue.NotEnoughIntelligence;
+                    else if (player.status.Wisdom < abilityToUse.requirements.wisdom) return AbilityReturnValue.NotEnoughWisdom;
+                    else
+                    {
+                        foreach (WeaponMasteryTypes key in abilityToUse.requirements.masteryRequirements.Keys)
+                        {
+                            if (player.weaponMastery.WeaponMasteryLevels[key] < abilityToUse.requirements.masteryRequirements[key])
+                            {
+                                return AbilityReturnValue.WeaponMasteryNotMet;
+                            }
+                        }
+                    }
+                }
+
+            }
+            coroutineTracker.StartTrackedCoroutine(abilityToUse.Use());
             return AbilityReturnValue.Success;
         }
     }

@@ -9,22 +9,12 @@ namespace Character.Actions
         private List<IEnumerator> skillSequence;
         private Coroutine coroutine;
 
-        public AttackPattern(Generic.CoroutineTracker tracker, float cooldown, string name, List<IEnumerator> skills) : base(tracker, cooldown, name)
+        public AttackPattern(string name, List<IEnumerator> skills) : base(name)
         {
             this.skillSequence = skills;
         }
 
-        public override IEnumerator Use()
-        {
-            foreach(IEnumerator skill in skillSequence)
-            {
-                this.coroutine = this.coroutineTracker.StartTrackedCoroutine(skill); //TODO redo AttackPattern, Skill and Spell, so they work like a interpreter based on save file
-                while (this.coroutineTracker.IsTrackedCoroutineRunning(skill))
-                {
-                    yield return new WaitForEndOfFrame();
-                }
-            }
-        }
+        
 
 
     }

@@ -14,18 +14,27 @@ namespace Character.Player
         [SerializeField] public float movementSpeed;
         [SerializeField] private float acceleration;
         [SerializeField] public float attackSpeed;
+        [SerializeField] public Dictionary<System.Type, string> hotkeys = new Dictionary<System.Type, string>();
 
 
         // Use this for initialization
         void Awake()
         {
             rigidbody = GetComponent<Rigidbody2D>();
+            hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
         }
 
         // Update is called once per frame
         void Update()
         {
             UpdateMovement();
+            foreach (System.Type key in hotkeys.Keys)
+            {
+                if (Input.GetAxis("Fire1") != 0)
+                {
+                    this.GetComponent<Player>().abilityManager.UseAbility(key);
+                }
+            }
         }
 
         private void UpdateMovement()

@@ -18,10 +18,8 @@ namespace Character.Actions
 
     public class Ability : MonoBehaviour
     {
-        public readonly Generic.CoroutineTracker coroutineTracker;
-
-        public float currentCooldown { get; private set; }
-        public string Name { get; private set; }
+        public float currentCooldown { get; set; }
+        public string Name { get; set; }
 
         [SerializeField] public AbilityRequirements requirements;
 
@@ -31,9 +29,8 @@ namespace Character.Actions
             if (currentCooldown > 0) currentCooldown -= Time.deltaTime;
         }
 
-        public Ability(Generic.CoroutineTracker tracker, string name)
+        public Ability(string name)
         {
-            this.coroutineTracker = tracker;
             this.Name = name;
         }
 

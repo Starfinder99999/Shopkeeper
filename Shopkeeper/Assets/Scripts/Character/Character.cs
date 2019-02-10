@@ -22,9 +22,27 @@ namespace Character
         public int hp;
 
         // Use this for initialization
-        void Start()
+        void Awake()
         {
+            InitializeStatus();
+            this.abilityManager = GetComponent<AbilityManager>();
+        }
 
+        private void InitializeStatus()
+        {
+            this.status = new Status(
+                100f, //Strength
+                100f, //Charisma
+                100f, //Perception
+                10f, //Luck
+                100f, //Endurance
+                100f, //Vitality
+                100f, //Agility
+                100f, //Intelligence
+                100f, //Wisdom
+                100f, //BaseMagicAffinity
+                100f, //BaseEnergy
+                30f); //Age
         }
 
         void TakeDamage(int damage, string damageType) //TODO make damagetype enum

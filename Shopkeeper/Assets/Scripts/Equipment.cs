@@ -21,11 +21,14 @@ namespace Items.Equipment
         Twohanded
     }
 
+
     public class Weapon : Equipment
     {
         public int Damage { get; set; }
 
         public WeaponSlotTypes SlotType { get; private set; }
+
+        public Dictionary<Character.WeaponMasteryTypes, float> weaponEfficiencyMasteryRequirement;
 
 
         public Weapon(string name, float weight, ItemQuality quality, int damage) : base(name, weight, quality)
