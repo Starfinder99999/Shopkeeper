@@ -7,7 +7,7 @@ namespace Generic
     public class CoroutineTracker : MonoBehaviour
     {
 
-        [SerializeField] private List<IEnumerator> runningCoroutinesByEnum;
+        [SerializeField] private List<IEnumerator> runningCoroutinesByEnum = new List<IEnumerator>();
 
         
 

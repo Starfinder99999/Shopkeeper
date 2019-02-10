@@ -30,8 +30,9 @@ namespace Character.Player
             UpdateMovement();
             foreach (System.Type key in hotkeys.Keys)
             {
-                if (Input.GetAxis("Fire1") != 0)
+                if (Input.GetAxis(hotkeys[key]) != 0)
                 {
+                    Debug.Log(hotkeys[key]);
                     this.GetComponent<Player>().abilityManager.UseAbility(key);
                 }
             }

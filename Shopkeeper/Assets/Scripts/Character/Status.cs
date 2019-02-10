@@ -17,18 +17,21 @@
             get { return intelligence; }
             set { intelligence = value; CalcMagicAffinity(); } }
 
+        private float wisdom;
         public float Wisdom {
-            get { return Wisdom; }
-            set { Wisdom = value; CalcMagicAffinity(); } }
+            get { return wisdom; }
+            set { wisdom = value; CalcMagicAffinity(); } }
 
+        private float baseMagicAffinity;
         public float BaseMagicAffinity {
-            get { return BaseMagicAffinity; }
-            set { BaseMagicAffinity = value; CalcMagicAffinity(); }
+            get { return baseMagicAffinity; }
+            set { baseMagicAffinity = value; CalcMagicAffinity(); }
         }
 
+        private float baseEnergy;
         public float BaseEnergy {
-            get { return BaseEnergy; }
-            set { BaseEnergy = value; CalcEnergy(); } }
+            get { return baseEnergy; }
+            set { baseEnergy = value; CalcEnergy(); } }
 
         public float Charisma { get; set; }
         public float Agility { get; set; }
@@ -60,17 +63,17 @@
 
         void CalcHealth()
         {
-            this.Health = (int) (100 + Strength + Vitality);
+            this.Health = (int) (100 + strength + vitality);
         }
 
         void CalcEnergy()
         {
-            this.Energy = (int) (this.BaseEnergy + this.Vitality);
+            this.Energy = (int) (this.baseEnergy + this.vitality);
         }
 
         void CalcMagicAffinity()
         {
-            this.MagicAffinity = this.Wisdom + this.Intelligence + this.BaseMagicAffinity;
+            this.MagicAffinity = this.wisdom + this.intelligence + this.baseMagicAffinity;
         }
 
     }
