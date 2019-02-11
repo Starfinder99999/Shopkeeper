@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 24353085}
   - component: {fileID: 24353086}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2721,7 +2721,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -6150,10 +6150,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1726919297}
   - component: {fileID: 1726919296}
-  - component: {fileID: 1726919295}
   - component: {fileID: 1726919294}
+  - component: {fileID: 1726919295}
   - component: {fileID: 1726919293}
   - component: {fileID: 1726919292}
+  - component: {fileID: 1726919298}
   m_Layer: 0
   m_Name: Dummy
   m_TagString: Untagged
@@ -6230,10 +6231,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1726919291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d35eebc54e45cd44890602cfe44bd574, type: 3}
+  m_Script: {fileID: 11500000, guid: f18fb4c4f74b84c49924d7954a3d23b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Test Dummy
+  characterName: 
   level: 0
   description: 
   sprite: {fileID: 0}
@@ -6277,7 +6278,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.4
-  m_LinearDrag: 30
+  m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -6292,12 +6293,27 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726919291}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.7, y: 0, z: 0}
+  m_LocalPosition: {x: -7.34, y: 3.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1726919298
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1726919291}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4
 --- !u!1 &1878101570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6811,7 +6827,7 @@ GameObject:
   - component: {fileID: 2123171781}
   - component: {fileID: 2123171783}
   - component: {fileID: 2123171782}
-  m_Layer: 2
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

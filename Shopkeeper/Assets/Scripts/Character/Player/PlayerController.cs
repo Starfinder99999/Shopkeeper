@@ -32,11 +32,26 @@ namespace Character.Player
             {
                 if (Input.GetAxis(hotkeys[key]) != 0)
                 {
-                    Debug.Log(hotkeys[key]);
                     this.GetComponent<Player>().abilityManager.UseAbility(key);
                 }
             }
+            if (Input.GetAxis("Interact") != 0)
+            {
+                LayerMask mask = LayerMask.GetMask("Default");
+                RaycastHit2D hit = Physics2D.Raycast(GetComponent<Rigidbody2D>().position,
+                    Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y),
+                    3, mask.value);
+                if (hit.collider != null)
+                {
+                    Debug.DrawLine(GetComponent<Rigidbody2D>().position, hit.point, new Color(0f, 0f, 200f), 0.4f, false);
+                    hit.rigidbody.BroadcastMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                }
+                else Debug.DrawRay(GetComponent<Rigidbody2D>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y), new Color(0f, 0f, 200f), 0.4f, false);
+
+            }
         }
+
+       
 
         private void UpdateMovement()
         {

@@ -22,7 +22,7 @@ namespace Character
         public int hp;
 
         // Use this for initialization
-        void Awake()
+        public void Awake()
         {
             InitializeStatus();
             this.abilityManager = GetComponent<AbilityManager>();
@@ -45,7 +45,7 @@ namespace Character
                 30f); //Age
         }
 
-        void TakeDamage(int damage, string damageType) //TODO make damagetype enum
+        public void TakeDamage(int damage, string damageType) //TODO make damagetype enum
         {
             this.hp -= damage;
             if (hp <= 0)
