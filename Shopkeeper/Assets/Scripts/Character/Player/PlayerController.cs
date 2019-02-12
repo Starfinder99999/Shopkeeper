@@ -8,6 +8,10 @@ namespace Character.Player
     {
 
         private Rigidbody2D rigidbody;
+        private LayerMask mask;
+        private ContactFilter2D filter;
+        private RaycastHit2D[] hits = new RaycastHit2D[10];
+        private bool interactcooldown = false;
 
         ///[SerializeField] private AudioSource sound;
         ///[SerializeField] public Animator animator;
@@ -22,6 +26,10 @@ namespace Character.Player
         {
             rigidbody = GetComponent<Rigidbody2D>();
             hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
+            LayerMask mask = LayerMask.GetMask("Default");
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.useTriggers = false;
+            filter.layerMask = mask;
         }
 
         // Update is called once per frame
@@ -35,19 +43,37 @@ namespace Character.Player
                     this.GetComponent<Player>().abilityManager.UseAbility(key);
                 }
             }
-            if (Input.GetAxis("Interact") != 0)
+            if (Input.GetAxis("Interact") != 0 && !interactcooldown)
             {
-                LayerMask mask = LayerMask.GetMask("Default");
-                RaycastHit2D hit = Physics2D.Raycast(GetComponent<Rigidbody2D>().position,
+                interactcooldown = true;
+                RaycastHit2D nearestHit;
+                Physics2D.Raycast(GetComponent<Rigidbody2D>().position,
                     Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y),
-                    3, mask.value);
-                if (hit.collider != null)
+                    filter, hits, 3);
+                
+                nearestHit = hits[0];
+                foreach (RaycastHit2D hit in hits)
                 {
-                    Debug.DrawLine(GetComponent<Rigidbody2D>().position, hit.point, new Color(0f, 0f, 200f), 0.4f, false);
-                    hit.rigidbody.BroadcastMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                    if (Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), new Vector3(hit.point.x, hit.point.y)) 
+                        < 
+                        Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), new Vector3(nearestHit.point.x, nearestHit.point.y)))
+                    {
+                        nearestHit = hit;
+                    } 
                 }
-                else Debug.DrawRay(GetComponent<Rigidbody2D>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y), new Color(0f, 0f, 200f), 0.4f, false);
 
+                if (nearestHit.collider != null)
+                {
+                    Debug.DrawLine(GetComponent<Rigidbody2D>().position, nearestHit.point, new Color(200f, 0f, 0), 0.4f, false);
+                    nearestHit.rigidbody.BroadcastMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                }
+                else Debug.DrawRay(GetComponent<Rigidbody2D>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y), new Color(0f, 200f, 0f), 0.4f, false);
+
+
+
+            }else if (Input.GetAxis("Interact") == 0 && interactcooldown)
+            {
+                interactcooldown = false;
             }
         }
 

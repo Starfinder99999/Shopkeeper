@@ -12,9 +12,8 @@ namespace Character
         {
             if (target)
             {
-                Debug.Log("Update");
-                Vector2 direction = Vector3.Normalize(gameObject.transform.position - this.transform.position);
-                this.GetComponent<Rigidbody2D>().AddForce(direction*10);
+                Vector2 direction = Vector3.Normalize(target.transform.position - this.transform.position);
+                this.GetComponent<Rigidbody2D>().velocity = direction;
             }
         }
 
@@ -41,12 +40,12 @@ namespace Character
             GetComponent<SpriteRenderer>().color = Color.white;
         }
 
+        
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("triggered");
             if (collision.GetComponent<Player.Player>())
             {
-                Debug.Log("Player");
                 target = collision.gameObject;
             }
         }
