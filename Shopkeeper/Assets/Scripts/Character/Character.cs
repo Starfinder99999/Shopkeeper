@@ -26,6 +26,7 @@ namespace Character
         {
             InitializeStatus();
             this.abilityManager = GetComponent<AbilityManager>();
+            this.hp = status.Health;
         }
 
         private void InitializeStatus()

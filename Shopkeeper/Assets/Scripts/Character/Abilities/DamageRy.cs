@@ -36,7 +36,7 @@ namespace Character.Actions
                 Debug.DrawLine(GetComponent<Rigidbody2D>().position,  hit.point, new Color(0f, 200f, 0f), 0.4f, false);
                 if (hit.rigidbody.GetComponent<Character>())
                 {
-                    hit.rigidbody.GetComponent<Character>().TakeDamage(50, "");
+                    hit.rigidbody.GetComponent<Character>().TakeDamage(20, "");
                 }
             }
             else Debug.DrawRay(GetComponent<Rigidbody2D>().position, cam.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y), new Color(0f, 200f, 0f), 0.4f, false);

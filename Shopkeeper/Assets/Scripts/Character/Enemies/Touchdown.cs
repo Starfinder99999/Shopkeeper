@@ -21,7 +21,7 @@ namespace Character
         {
             if (collision.gameObject.GetComponent<Player.Player>())
             {
-                collision.gameObject.GetComponent<Player.Player>().TakeDamage(100, "");
+                collision.gameObject.GetComponent<Player.Player>().TakeDamage(30, "");
             }
         }
 
