@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum ItemQuality { 
-
+public enum ItemQuality {
+    lowQuality
 }
