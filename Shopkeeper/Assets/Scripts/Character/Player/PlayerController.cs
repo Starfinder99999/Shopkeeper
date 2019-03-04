@@ -28,7 +28,7 @@ namespace Character.Player
             hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
             LayerMask mask = LayerMask.GetMask("Default");
             ContactFilter2D filter = new ContactFilter2D();
-            filter.useTriggers = false;
+            filter.useTriggers = true;
             filter.layerMask = mask;
         }
 

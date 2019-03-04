@@ -7,7 +7,7 @@ namespace GameUI
     public class HPBar : MonoBehaviour
     {
 
-        [SerializeField] Character.Player.Player player;
+        [SerializeField] Character.Character character;
         [SerializeField] UnityEngine.UI.Slider slider;
         [SerializeField] UnityEngine.UI.Text text;
 
@@ -17,8 +17,8 @@ namespace GameUI
         // Update is called once per frame
         void Update()
         {
-            slider.value =  (float)player.hp / (float)player.status.Health;
-            text.text = string.Format("{0}/{1}", player.hp, player.status.Health);
+            slider.value =  (float)character.hp / (float)character.status.Health;
+            text.text = string.Format("{0}/{1}", character.hp, character.status.Health);
         }
     }
 }
