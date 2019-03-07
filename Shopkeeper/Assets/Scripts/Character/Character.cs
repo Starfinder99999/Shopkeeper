@@ -14,8 +14,8 @@ namespace Character
         [SerializeField] int level;
         [SerializeField] string description;
         [SerializeField] Sprite sprite;
+        [SerializeField] public Generic.Inventory inventory;
 
-        [SerializeField] Generic.Inventory inventory;
         public Status status { get; private set; }
         public AbilityManager abilityManager;
 

@@ -77,6 +77,7 @@ namespace Character
                     else if (player.status.Health < abilityToUse.requirements.health) return AbilityReturnValue.NotEnoughHealth;
                     else if (player.status.Intelligence < abilityToUse.requirements.intelligence) return AbilityReturnValue.NotEnoughIntelligence;
                     else if (player.status.Wisdom < abilityToUse.requirements.wisdom) return AbilityReturnValue.NotEnoughWisdom;
+                    else if (abilityToUse.currentCooldown > 0) return AbilityReturnValue.CooldownInProgress;
                     else
                     {
                         foreach (WeaponMasteryTypes key in abilityToUse.requirements.masteryRequirements.Keys)

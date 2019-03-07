@@ -10,7 +10,17 @@ namespace Character.Player
     {
         public EquipmentInventory PlayerEquipment { get; private set; }
         public WeaponMastery weaponMastery;
-        
+
+        private void Update()
+        {
+            string test = "";
+            foreach (Item key in inventory.ItemList.Keys)
+            {
+                test += key.Name + "; ";
+            }
+            Debug.Log(test);
+        }
+
     }
 
     public class EquipmentInventory

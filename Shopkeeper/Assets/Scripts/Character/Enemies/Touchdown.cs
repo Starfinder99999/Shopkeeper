@@ -25,7 +25,7 @@ namespace Character
             }
         }
 
-        private void Interact()
+        private void Interact(Character player)
         {
             Debug.Log("Hello");
         }

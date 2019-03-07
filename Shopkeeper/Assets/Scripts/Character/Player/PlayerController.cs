@@ -10,7 +10,7 @@ namespace Character.Player
         private Rigidbody2D rigidbody;
         private LayerMask mask;
         private ContactFilter2D filter;
-        private RaycastHit2D[] hits = new RaycastHit2D[10];
+        private RaycastHit2D[] hits;
         private bool interactcooldown = false;
 
         ///[SerializeField] private AudioSource sound;
@@ -19,6 +19,7 @@ namespace Character.Player
         [SerializeField] private float acceleration;
         [SerializeField] public float attackSpeed;
         [SerializeField] public Dictionary<System.Type, string> hotkeys = new Dictionary<System.Type, string>();
+        [SerializeField] public Player player;
 
 
         // Use this for initialization
@@ -27,9 +28,12 @@ namespace Character.Player
             rigidbody = GetComponent<Rigidbody2D>();
             hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
             LayerMask mask = LayerMask.GetMask("Default");
-            ContactFilter2D filter = new ContactFilter2D();
+            filter = new ContactFilter2D();
             filter.useTriggers = true;
+            filter.useLayerMask = true;
             filter.layerMask = mask;
+            
+            
         }
 
         // Update is called once per frame
@@ -45,6 +49,7 @@ namespace Character.Player
             }
             if (Input.GetAxis("Interact") != 0 && !interactcooldown)
             {
+                hits = new RaycastHit2D[10];
                 interactcooldown = true;
                 RaycastHit2D nearestHit;
                 Physics2D.Raycast(GetComponent<Rigidbody2D>().position,
@@ -65,7 +70,7 @@ namespace Character.Player
                 if (nearestHit.collider != null)
                 {
                     Debug.DrawLine(GetComponent<Rigidbody2D>().position, nearestHit.point, new Color(200f, 0f, 0), 0.4f, false);
-                    nearestHit.rigidbody.BroadcastMessage("Interact", SendMessageOptions.DontRequireReceiver);
+                    nearestHit.rigidbody.BroadcastMessage("Interact", this.gameObject.GetComponent<Player>(), SendMessageOptions.DontRequireReceiver);
                 }
                 else Debug.DrawRay(GetComponent<Rigidbody2D>().position, Camera.main.ScreenToWorldPoint(Input.mousePosition) - new Vector3(GetComponent<Rigidbody2D>().position.x, GetComponent<Rigidbody2D>().position.y), new Color(0f, 200f, 0f), 0.4f, false);
 
