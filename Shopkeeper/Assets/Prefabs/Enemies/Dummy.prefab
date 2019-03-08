@@ -313,10 +313,12 @@ MonoBehaviour:
   level: 0
   description: 
   sprite: {fileID: 0}
-  inventory: {fileID: 0}
   abilityManager: {fileID: 0}
   hp: 0
   npcHUD: {fileID: 1224671913422290}
+  inventoryItems: 
+  droppedItem: {fileID: 1791258592882676, guid: 69b9ba6e9d8beba489f5f12269d23d22,
+    type: 2}
 --- !u!114 &114532471413989702
 MonoBehaviour:
   m_ObjectHideFlags: 1

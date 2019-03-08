@@ -53,7 +53,6 @@ namespace Generic
         /// <param name="amount">value >= 0</param>
         /// <returns>False if unsuccessfull</returns>
         public bool RemoveItem(Item item, int amount = 1)
-
         { 
             if (this.ItemList.ContainsKey(item) && this.ItemList[item] <= amount){ //CHECK if runtime error occurs
                 this.currentWeight -= (item.Weight * amount);
@@ -66,6 +65,16 @@ namespace Generic
                
                 return false;
             }
+        }
+
+        public int GetSize()
+        {
+            int size = 0;
+            foreach (Items.Item key in ItemList.Keys)
+            {
+                size += ItemList[key];
+            }
+            return size;
         }
 
     }

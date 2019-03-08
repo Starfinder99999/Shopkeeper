@@ -14,7 +14,6 @@ namespace Character
         [SerializeField] int level;
         [SerializeField] string description;
         [SerializeField] Sprite sprite;
-        [SerializeField] public Generic.Inventory inventory;
 
         public Status status { get; private set; }
         public AbilityManager abilityManager;
@@ -55,7 +54,7 @@ namespace Character
             }
         }
 
-        void Die()
+        virtual protected void Die()
         {
             Debug.Log(this.gameObject + " died!");
             Destroy(this.gameObject);

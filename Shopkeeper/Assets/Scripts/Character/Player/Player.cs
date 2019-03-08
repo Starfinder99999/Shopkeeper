@@ -11,6 +11,8 @@ namespace Character.Player
         public EquipmentInventory PlayerEquipment { get; private set; }
         public WeaponMastery weaponMastery;
 
+        [SerializeField] public Generic.Inventory inventory;
+
         private void Update()
         {
             string test = "";

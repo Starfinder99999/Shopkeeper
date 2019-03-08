@@ -5,16 +5,16 @@ using UnityEngine;
 namespace Items {
     public class ItemManagerSingleton : MonoBehaviour {
 
-        private static ItemManagerSingleton singleton;
+        public static ItemManagerSingleton Instance { get; private set; }
 
         // Use this for initialization
         void Awake() {
-            if (!singleton) singleton = this;
-            else
+            if (Instance != null && Instance != this)
             {
                 Debug.Log("Double Singleton detected");
                 Destroy(this);
             }
+            else Instance = this;
         }
 
         public Item CreateItem(int id)

@@ -10,13 +10,12 @@ namespace Items
         [SerializeField] public GameObject canvas;
         [SerializeField] public UnityEngine.UI.Text itemNameText;
         [SerializeField] public int itemID;
-        [SerializeField] Items.ItemManagerSingleton itemManager;
         private Items.Item item;
 
         // Use this for initialization
-        void Awake()
+        void Start()
         {
-            item = itemManager.CreateItem(itemID);
+            item = ItemManagerSingleton.Instance.CreateItem(itemID);
             itemNameText.text = item.Name;
             HideDetails();
             
@@ -37,7 +36,7 @@ namespace Items
         // Update is called once per frame
 
 
-        private void Interact(Character.Character player)
+        private void Interact(Character.Player.Player player)
         {
             player.inventory.AddItem(item, 1);
             Destroy(this.gameObject);
