@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Character
+namespace Character.NPC
 {
-    public class Touchdown : Character
+    public class Touchdown : NPC
     {
         GameObject target;
 

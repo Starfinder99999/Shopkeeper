@@ -27,9 +27,9 @@ namespace Character.Player
         {
             rigidbody = GetComponent<Rigidbody2D>();
             hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
-            LayerMask mask = LayerMask.GetMask("Default");
+            LayerMask mask = LayerMask.GetMask("Default", "Item");
             filter = new ContactFilter2D();
-            filter.useTriggers = true;
+            filter.useTriggers = false;
             filter.useLayerMask = true;
             filter.layerMask = mask;
             
@@ -66,7 +66,6 @@ namespace Character.Player
                         nearestHit = hit;
                     } 
                 }
-
                 if (nearestHit.collider != null)
                 {
                     Debug.DrawLine(GetComponent<Rigidbody2D>().position, nearestHit.point, new Color(200f, 0f, 0), 0.4f, false);
