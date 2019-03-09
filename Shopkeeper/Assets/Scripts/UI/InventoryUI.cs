@@ -10,11 +10,14 @@ namespace GameUI
     public class InventoryUI : MonoBehaviour
     {
 
-        [SerializeField] Inventory inventory;
+        [SerializeField] public Inventory inventory;
+        [SerializeField] public GameObject content;
+        [SerializeField] public GameObject slotPrefab;
 
         // Use this for initialization
         void Awake()
         {
+            this.CreateItemSlot(new Item("Toast2", 12f, Items.ItemQuality.common), 2);
             //this.gameObject.SetActive(false);
             this.OpenInventory();
         }
@@ -34,6 +37,10 @@ namespace GameUI
         {
             foreach (Item item in inventory.ItemList.Keys)
             {
+                foreach (GameObject slot in content.GetComponentsInChildren<GameObject>())
+                {
+
+                }
                 this.CreateItemSlot(item, inventory.ItemList[item]);
             }
 
@@ -43,10 +50,13 @@ namespace GameUI
 
         private void CreateItemSlot(Item item, int amount)
         {
-            Debug.Log(item.Name + "Hello");
+            GameObject slot = GameObject.Instantiate(slotPrefab);
+            slot.transform.SetParent(content.transform);
+            slot.GetComponentsInChildren<Text>()[1].text = item.Name;
+            slot.GetComponentsInChildren<Text>()[0].text = amount.ToString();
         }
 
-        public void RefreshItemList()
+        public void AddItemTo ()
         {
             //TODO RefreshItemList()
         }

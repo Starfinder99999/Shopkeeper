@@ -12,6 +12,7 @@ namespace Character.Player
         private ContactFilter2D filter;
         private RaycastHit2D[] hits;
         private bool interactcooldown = false;
+        private int uiCooldown = 0;
 
         ///[SerializeField] private AudioSource sound;
         ///[SerializeField] public Animator animator;
@@ -20,6 +21,7 @@ namespace Character.Player
         [SerializeField] public float attackSpeed;
         [SerializeField] public Dictionary<System.Type, string> hotkeys = new Dictionary<System.Type, string>();
         [SerializeField] public Player player;
+        [SerializeField] public GameUI.InventoryUI inventory;
 
 
         // Use this for initialization
@@ -78,6 +80,17 @@ namespace Character.Player
             }else if (Input.GetAxis("Interact") == 0 && interactcooldown)
             {
                 interactcooldown = false;
+            }
+
+            if (Input.GetAxis("Inventory") != 0 && uiCooldown == 0)
+            {
+                uiCooldown = 20;
+                inventory.ToggleInventory();
+            }
+            else if(uiCooldown != 0)
+            {
+                uiCooldown --;
+                Debug.Log(uiCooldown);
             }
         }
 
