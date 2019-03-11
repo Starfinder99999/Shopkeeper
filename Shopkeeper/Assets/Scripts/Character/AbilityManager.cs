@@ -38,7 +38,7 @@ namespace Character
                 if (this.GetComponent<Player.Player>())
                 {
                     Player.Player player = this.GetComponent<Player.Player>();
-                    if (player.status.Energy < learntAbilities[abilityIndex].requirements.energy) return AbilityReturnValue.NotEnoughEnergy;
+                    if (player.energy < learntAbilities[abilityIndex].requirements.energy) return AbilityReturnValue.NotEnoughEnergy;
                     else if (player.status.Health < learntAbilities[abilityIndex].requirements.health) return AbilityReturnValue.NotEnoughHealth;
                     else if (player.status.Intelligence < learntAbilities[abilityIndex].requirements.intelligence) return AbilityReturnValue.NotEnoughIntelligence;
                     else if (player.status.Wisdom < learntAbilities[abilityIndex].requirements.wisdom) return AbilityReturnValue.NotEnoughWisdom;

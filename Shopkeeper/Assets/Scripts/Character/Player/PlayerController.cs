@@ -29,6 +29,7 @@ namespace Character.Player
         {
             rigidbody = GetComponent<Rigidbody2D>();
             hotkeys.Add(typeof(Actions.DamageRy), "Fire1");
+            hotkeys.Add(typeof(Actions.SelfHeal), "Hotbar1");
             LayerMask mask = LayerMask.GetMask("Default", "Item");
             filter = new ContactFilter2D();
             filter.useTriggers = false;

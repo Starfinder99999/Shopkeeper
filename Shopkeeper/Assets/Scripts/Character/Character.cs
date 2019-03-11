@@ -19,6 +19,7 @@ namespace Character
         public AbilityManager abilityManager;
 
         public int hp;
+        public int energy;
 
         // Use this for initialization
         public void Awake()
@@ -26,6 +27,7 @@ namespace Character
             InitializeStatus();
             this.abilityManager = GetComponent<AbilityManager>();
             this.hp = status.Health;
+            energy = status.Energy;
         }
 
         private void InitializeStatus()
