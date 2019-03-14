@@ -6,6 +6,7 @@ namespace Character.NPC
 {
     public class FriendlyNPC : NPC
     {
-        
+        [SerializeField] GameUI.Worldspace.NPCPanel NPCOverlay;
+
     }
 }
